@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TriviaActivity">
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Q12"
+        android:id="@+id/labelQuesitonNum"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/blue_and_border"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageTrivia"
+        android:layout_alignStart="@+id/imageTrivia" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/time_left_placeholder"
+        android:id="@+id/labelTimeLeft"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/blue_and_border"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="180dp"
+        android:id="@+id/imageTrivia"
+        android:layout_below="@+id/labelTimeLeft"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/question_text_placeholder"
+        android:id="@+id/labelQuestionText"
+        android:layout_below="@+id/imageTrivia"
+        android:layout_alignLeft="@+id/imageTrivia"
+        android:layout_alignStart="@+id/imageTrivia"
+        android:textSize="17dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/labelQuestionText"
+        android:layout_alignLeft="@+id/labelQuestionText"
+        android:layout_alignStart="@+id/labelQuestionText"
+        android:id="@+id/radioGroupAnswers"
+        android:layout_above="@+id/buttonQuit"
+        android:orientation="vertical"></RadioGroup>
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="@string/Quit"
+        android:id="@+id/buttonQuit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/radioGroupAnswers"
+        android:layout_alignStart="@+id/radioGroupAnswers"
+        android:background="@drawable/button_border"
+        android:onClick="clickQuit" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="@string/Next"
+        android:id="@+id/buttonNext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageTrivia"
+        android:layout_alignEnd="@+id/imageTrivia"
+        android:background="@drawable/button_border"
+        android:onClick="clickNext" />
+
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_alignTop="@+id/imageTrivia"
+        android:layout_alignBottom="@+id/imageTrivia">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

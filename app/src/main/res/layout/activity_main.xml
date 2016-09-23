@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.itcs4180.hw4_triviaapp.MainActivity">
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcome_to_trivia_app"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageTrivia"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/trivia"
+        android:background="#00ffffff"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/loading_trivia"
+        android:id="@+id/labelStatus"
+        android:layout_alignBottom="@+id/imageTrivia"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:id="@+id/butttonExit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        android:background="@drawable/button_border"
+        android:onClick="clickExit" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start_trivia"
+        android:id="@+id/buttonStart"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageTrivia"
+        android:layout_alignEnd="@+id/imageTrivia"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:background="@drawable/button_border"
+        android:onClick="clickStartTrivia"
+        android:enabled="false" />
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_alignTop="@+id/imageTrivia"
+        android:layout_above="@+id/labelStatus">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
