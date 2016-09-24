@@ -118,13 +118,15 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
             RadioButton newRadioButton = new RadioButton(this);
             newRadioButton.setText(question.choices[i - 1]);
             newRadioButton.setId(i); //id can't be 0 and wont
+            //newRadioButton.setTextSize(25);
+            // could change text size if I wanted, radioGroup is in a scrollView so it would work
 
             LinearLayout.LayoutParams layoutParams = new RadioGroup.LayoutParams(
                     RadioGroup.LayoutParams.WRAP_CONTENT,
                     RadioGroup.LayoutParams.WRAP_CONTENT);
             answersGroup.addView(newRadioButton, 0, layoutParams);
 
-            newRadioButton.setChecked(true); //the last (1st) button ends up being the only one checked
+            newRadioButton.setChecked(true); //the last (top) button ends up being the only one checked
         }
 
     }
@@ -138,6 +140,7 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
     @Override
     public void showImage(Bitmap image, int num) {
+        //ensure that the image is only shown if the num from the task matches the currentIndex
         if (num == currentIndex) {
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             ImageView imageView = (ImageView) findViewById(R.id.imageTrivia);

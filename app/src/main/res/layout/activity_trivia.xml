@@ -62,24 +62,14 @@
         android:layout_alignStart="@+id/imageTrivia"
         android:textSize="17dp" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/labelQuestionText"
-        android:layout_alignLeft="@+id/labelQuestionText"
-        android:layout_alignStart="@+id/labelQuestionText"
-        android:id="@+id/radioGroupAnswers"
-        android:layout_above="@+id/buttonQuit"
-        android:orientation="vertical"></RadioGroup>
-
     <Button
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:text="@string/Quit"
         android:id="@+id/buttonQuit"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/radioGroupAnswers"
-        android:layout_alignStart="@+id/radioGroupAnswers"
+        android:layout_alignLeft="@+id/scrollView"
+        android:layout_alignStart="@+id/scrollView"
         android:background="@drawable/button_border"
         android:onClick="clickQuit" />
 
@@ -108,4 +98,23 @@
             android:indeterminate="true" />
 
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/labelQuestionText"
+        android:layout_alignLeft="@+id/labelQuestionText"
+        android:layout_alignStart="@+id/labelQuestionText"
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/buttonQuit"
+        android:fadeScrollbars="false">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/radioGroupAnswers"
+                android:orientation="vertical"
+                android:scrollbars="vertical"></RadioGroup>
+        </ScrollView>
+
 </RelativeLayout>
