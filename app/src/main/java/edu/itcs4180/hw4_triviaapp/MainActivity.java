@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements Async_FetchQuesti
 
     public static final int TIMER_LENGTH = 120;
 
-    //TODO create the trivia activity
     ArrayList<Question> questionList;
 
     @Override

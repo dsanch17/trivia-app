@@ -70,7 +70,8 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
         timerATask.cancel(true);
 
-        Intent resultIntent = new Intent(TriviaActivity.this, ResultsActivity.class);
+        Intent resultIntent = new Intent(TriviaActivity.this, StatsActivity.class);
+        resultIntent.putExtra(MainActivity.KEY_QUESTION_LIST, questionsList);
         resultIntent.putExtra(MainActivity.KEY_ANSWERS_LIST, answersArray);
         startActivity(resultIntent);
         finish();
