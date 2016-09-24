@@ -39,7 +39,8 @@
         android:id="@+id/labelGrade"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -69,23 +70,25 @@
         android:gravity="center_vertical|center_horizontal" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="@string/Quit"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="clickExitStats" />
+        android:onClick="clickExitStats"
+        android:background="@drawable/button_border" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="@string/try_again"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="clickTryAgain" />
+        android:onClick="clickTryAgain"
+        android:background="@drawable/blue_and_border" />
 
 </RelativeLayout>

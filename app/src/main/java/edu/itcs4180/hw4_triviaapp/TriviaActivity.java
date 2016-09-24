@@ -99,6 +99,7 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
             new Async_FetchImage(TriviaActivity.this).execute(question.imageURL);
         } else {
             findViewById(R.id.imageTrivia).setVisibility(View.INVISIBLE);
+            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
         }
 
     }

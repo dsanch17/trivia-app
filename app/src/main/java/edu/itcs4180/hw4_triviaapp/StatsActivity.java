@@ -1,6 +1,7 @@
 package edu.itcs4180.hw4_triviaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,17 +24,32 @@ public class StatsActivity extends AppCompatActivity {
 
         questionsList = (ArrayList<Question>) getIntent().getExtras().getSerializable(MainActivity.KEY_QUESTION_LIST);
         int correctAnswers = getIntent().getExtras().getInt(MainActivity.KEY_INT_CORRECT_ANSWERS);
-        correctAnswers = 9;
+        //correctAnswers = 9;
 
         Double scoreDecimal = Double.valueOf(correctAnswers) / questionsList.size();
         Double scorePercentage = scoreDecimal * 100;
-        Log.d("test", "score percentage: " + scorePercentage);
 
 
+        //currently rounding the proper way, may need to change to always round down
+        int scoreRounded = (int)Math.round(scorePercentage);
+        //scoreRounded = 50; //testing colors
+
+        ProgressBar gradeBar = (ProgressBar) findViewById(R.id.progressGrade);
+        gradeBar.setProgress(scoreRounded);
 
 
-        ((ProgressBar)(findViewById(R.id.progressGrade))).setProgress(scorePercentage.intValue());
-        ((TextView)(findViewById(R.id.labelGrade))).setText(String.valueOf(scorePercentage.intValue()) + "%");
+        TextView gradeLabel = (TextView)(findViewById(R.id.labelGrade));
+
+
+        gradeLabel.setText(scoreRounded + "%");
+
+        if (scoreRounded >= 75) {
+            gradeLabel.setTextColor(getResources().getColor(R.color.darkGreen));
+        } else if (scoreRounded >= 50){
+            gradeLabel.setTextColor(getResources().getColor(R.color.darkYellow));
+        } else {
+            gradeLabel.setTextColor(Color.RED);
+        }
     }
 
     public void clickTryAgain(View v) {
