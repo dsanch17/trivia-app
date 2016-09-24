@@ -1,7 +1,6 @@
 package edu.itcs4180.hw4_triviaapp;
 
-import android.app.ProgressDialog;
-import android.content.Context;
+
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -58,7 +57,6 @@ public class Async_FetchQuestions extends AsyncTask <String, Void, ArrayList<Que
 
                 JSONArray questionsArray = new JSONObject(dataString).getJSONArray("questions");
 
-                Log.d("test","before for loop");
                 for (int i = 0; i < questionsArray.length(); i++) {
                     Log.d("test", "calling createFromJSON... " + i);
                     questionsList.add(Question.createQuestionFromJSONOBject(questionsArray.getJSONObject(i)));

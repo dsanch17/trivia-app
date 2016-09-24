@@ -73,6 +73,7 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
         Intent resultIntent = new Intent(TriviaActivity.this, ResultsActivity.class);
         resultIntent.putExtra(MainActivity.KEY_ANSWERS_LIST, answersArray);
         startActivity(resultIntent);
+        finish();
     }
 
     void checkAnswer() {

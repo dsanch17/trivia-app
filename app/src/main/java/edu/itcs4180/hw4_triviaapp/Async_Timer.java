@@ -1,7 +1,6 @@
 package edu.itcs4180.hw4_triviaapp;
 
 import android.os.AsyncTask;
-import android.os.Handler;
 
 
 /**
@@ -12,14 +11,6 @@ public class Async_Timer extends AsyncTask<Void, Integer, Void> {
     int timeLeft;
     int totalTime;
     TriviaTimer triviaTimer;
-
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-
-        }
-    };
 
     Async_Timer(TriviaTimer triviaTimer, int totalTime) {
         this.totalTime = totalTime;
