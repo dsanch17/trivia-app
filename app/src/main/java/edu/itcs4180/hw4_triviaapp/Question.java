@@ -26,16 +26,16 @@ public class Question implements Serializable{
         this.answer = answer;
     }
 
-    // take Json 1 of the JSON objects and return a question object
+    // take Json of the JSON objects and return a question object
     public static Question createQuestionFromJSONOBject(JSONObject q) throws JSONException {
         int id = q.getInt("id");
         String text = q.getString("text");
         String imageURL = null;
-        try {
-         imageURL = q.getString("image");
-        } catch (JSONException j) {
+        if (q.has("image"))
+            imageURL = q.getString("image");
+        else
             imageURL = null;
-        }
+
 
         JSONObject choicesObject = q.optJSONObject("choices");
         int answer = choicesObject.getInt("answer") - 1;
