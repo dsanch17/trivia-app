@@ -23,7 +23,7 @@ public class StatsActivity extends AppCompatActivity {
 
         questionsList = (ArrayList<Question>) getIntent().getExtras().getSerializable(MainActivity.KEY_QUESTION_LIST);
         int correctAnswers = getIntent().getExtras().getInt(MainActivity.KEY_INT_CORRECT_ANSWERS);
-        //correctAnswers = 15;
+        correctAnswers = 9;
 
         Double scoreDecimal = Double.valueOf(correctAnswers) / questionsList.size();
         Double scorePercentage = scoreDecimal * 100;

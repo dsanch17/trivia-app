@@ -23,7 +23,6 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
     int currentIndex = 0;
     int numOfQuestions;
     Async_Timer timerATask;
-    ArrayList<Async_FetchImage> imageFetchATasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,6 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
     //on click check the answer and then display the next question
     public void clickNext(View v) {
-
-        //cancel the current image fetching task if there is one
-        Async_FetchImage currTask;
-        if ((currTask = imageFetchATasks.get(currentIndex)) != null)
-            currTask.cancel(true);
-
 
         checkAnswer();
 
@@ -103,12 +96,9 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
 
         if (question.imageURL != null) {
-            Async_FetchImage newTask = new Async_FetchImage(TriviaActivity.this);
-            imageFetchATasks.add(newTask);
-            newTask.execute(question.imageURL);
+            new Async_FetchImage(TriviaActivity.this).execute(question.imageURL);
         } else {
             findViewById(R.id.imageTrivia).setVisibility(View.INVISIBLE);
-            imageFetchATasks.add(null);
         }
 
     }
