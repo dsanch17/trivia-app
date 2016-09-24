@@ -96,7 +96,7 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
 
         if (question.imageURL != null) {
-            new Async_FetchImage(TriviaActivity.this).execute(question.imageURL);
+            new Async_FetchImage(TriviaActivity.this, index).execute(question.imageURL);
         } else {
             findViewById(R.id.imageTrivia).setVisibility(View.INVISIBLE);
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
@@ -137,11 +137,13 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
     }
 
     @Override
-    public void showImage(Bitmap image) {
-        findViewById(R.id.loadingPanel).setVisibility(View.GONE);
-        ImageView imageView = (ImageView) findViewById(R.id.imageTrivia);
-        imageView.setImageBitmap(image);
-        imageView.setVisibility(View.VISIBLE);
+    public void showImage(Bitmap image, int num) {
+        if (num == currentIndex) {
+            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            ImageView imageView = (ImageView) findViewById(R.id.imageTrivia);
+            imageView.setImageBitmap(image);
+            imageView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

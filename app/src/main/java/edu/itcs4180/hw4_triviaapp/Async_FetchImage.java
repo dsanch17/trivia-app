@@ -16,10 +16,12 @@ import java.net.URL;
 public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
 
     ImageInterface imageInterface;
+    int imgIndex;
     InputStream urlStream = null;
 
-    Async_FetchImage(ImageInterface i) {
+    Async_FetchImage(ImageInterface i, int num) {
         this.imageInterface = i;
+        this.imgIndex = num;
     }
 
 
@@ -67,12 +69,12 @@ public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        imageInterface.showImage(bitmap);
+        imageInterface.showImage(bitmap, imgIndex);
     }
 
 
     interface ImageInterface {
         void showLoading();
-        void showImage(Bitmap image);
+        void showImage(Bitmap image, int num);
     }
 }
