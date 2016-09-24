@@ -10,5 +10,9 @@
     <string name="question_text_placeholder">Question text goes here..</string>
     <string name="Quit">Quit</string>
     <string name="Next">Next</string>
+    <string name="Trivia_Stats">Trivia Stats</string>
+    <string name="Correct_answers">Correct Answers</string>
+    <string name="try_again_paragraph">Try again and see if you can get all the correct answers!</string>
+    <string name="try_again">Try Again</string>
 
 </resources>

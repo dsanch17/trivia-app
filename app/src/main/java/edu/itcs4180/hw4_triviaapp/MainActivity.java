@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements Async_FetchQuestions.urlDataReceiver {
 
     public static final String KEY_QUESTION_LIST = "trivia list";
-    public static final String KEY_ANSWERS_LIST = "answers list";
+    public static final String KEY_INT_CORRECT_ANSWERS = "answers value";
 
     public static final int TIMER_LENGTH = 120;
 

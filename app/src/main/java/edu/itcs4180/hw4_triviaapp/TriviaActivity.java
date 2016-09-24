@@ -19,21 +19,22 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
     RadioGroup answersGroup;
     ArrayList<Question> questionsList;
-    boolean[] answersArray;
+    int correctAnswers = 0;
     int currentIndex = 0;
     int numOfQuestions;
     Async_Timer timerATask;
+    ArrayList<Async_FetchImage> imageFetchATasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
 
+
         answersGroup = (RadioGroup) findViewById(R.id.radioGroupAnswers);
         questionsList = (ArrayList<Question>) getIntent().getExtras().getSerializable(MainActivity.KEY_QUESTION_LIST);
 
         numOfQuestions = questionsList.size();
-        answersArray = new boolean[numOfQuestions];
 
         displayQuestion(currentIndex);
 
@@ -45,6 +46,13 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
     //on click check the answer and then display the next question
     public void clickNext(View v) {
+
+        //cancel the current image fetching task if there is one
+        Async_FetchImage currTask;
+        if ((currTask = imageFetchATasks.get(currentIndex)) != null)
+            currTask.cancel(true);
+
+
         checkAnswer();
 
         currentIndex++;
@@ -62,17 +70,11 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
     }
 
     void gotoResults() {
-
-        //set any remaining answers to false in the case of a time out
-        for (int i = currentIndex; i < numOfQuestions; i++) {
-            answersArray[i] = false;
-        }
-
         timerATask.cancel(true);
 
         Intent resultIntent = new Intent(TriviaActivity.this, StatsActivity.class);
         resultIntent.putExtra(MainActivity.KEY_QUESTION_LIST, questionsList);
-        resultIntent.putExtra(MainActivity.KEY_ANSWERS_LIST, answersArray);
+        resultIntent.putExtra(MainActivity.KEY_INT_CORRECT_ANSWERS, correctAnswers);
         startActivity(resultIntent);
         finish();
     }
@@ -81,14 +83,14 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
         if (currentIndex < numOfQuestions) {
 
             //since the id is set via i in the loop, it is only offset by 1 with the index of the item
+            // (id can't be 0 so it has to be off by 1)
             int selected = answersGroup.getCheckedRadioButtonId() - 1;
             int correct = questionsList.get(currentIndex).answer;
             Log.d("testCheck", "selected: " + selected);
             Log.d("testCheck", "correct is: " + correct);
             if (selected == correct) {
-                answersArray[currentIndex] = true;
-            } else
-                answersArray[currentIndex] = false;
+                correctAnswers++;
+            }
         }
     }
 
@@ -101,9 +103,12 @@ public class TriviaActivity extends AppCompatActivity implements Async_FetchImag
 
 
         if (question.imageURL != null) {
-            new Async_FetchImage(TriviaActivity.this).execute(question.imageURL);
+            Async_FetchImage newTask = new Async_FetchImage(TriviaActivity.this);
+            imageFetchATasks.add(newTask);
+            newTask.execute(question.imageURL);
         } else {
             findViewById(R.id.imageTrivia).setVisibility(View.INVISIBLE);
+            imageFetchATasks.add(null);
         }
 
     }

@@ -3,6 +3,7 @@ package edu.itcs4180.hw4_triviaapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,16 +17,19 @@ import java.net.URL;
 public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
 
     ImageInterface imageInterface;
+    InputStream urlStream = null;
 
     Async_FetchImage(ImageInterface i) {
         this.imageInterface = i;
     }
 
 
+
+
     @Override
     protected Bitmap doInBackground(String... strings) {
 
-        InputStream urlStream = null;
+
         try {
             URL url = new URL(strings[0]);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -36,7 +40,7 @@ public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (urlStream != null )
                 try {
                     urlStream.close();
@@ -47,6 +51,15 @@ public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
         return null;
     }
 
+    @Override
+    protected void onCancelled() {
+        if (urlStream != null )
+            try {
+                urlStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
     @Override
     protected void onPreExecute() {
