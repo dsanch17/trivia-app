@@ -32,7 +32,7 @@ public class StatsActivity extends AppCompatActivity {
 
         //currently rounding the proper way, may need to change to always round down
         int scoreRounded = (int)Math.round(scorePercentage);
-        //scoreRounded = 50; //testing colors
+        scoreRounded = 30; //testing colors
 
         ProgressBar gradeBar = (ProgressBar) findViewById(R.id.progressGrade);
         gradeBar.setProgress(scoreRounded);
@@ -48,7 +48,7 @@ public class StatsActivity extends AppCompatActivity {
         } else if (scoreRounded >= 50){
             gradeLabel.setTextColor(getResources().getColor(R.color.darkYellow));
         } else {
-            gradeLabel.setTextColor(Color.RED);
+            gradeLabel.setTextColor(getResources().getColor(R.color.darkRed));
         }
     }
 
