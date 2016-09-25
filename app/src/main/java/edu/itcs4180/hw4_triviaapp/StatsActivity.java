@@ -2,6 +2,7 @@ package edu.itcs4180.hw4_triviaapp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class StatsActivity extends AppCompatActivity {
 
         //currently rounding the proper way, may need to change to always round down
         int scoreRounded = (int)Math.round(scorePercentage);
-        scoreRounded = 30; //testing colors
+        //scoreRounded = 65; //testing colors
 
         ProgressBar gradeBar = (ProgressBar) findViewById(R.id.progressGrade);
         gradeBar.setProgress(scoreRounded);
@@ -44,11 +45,11 @@ public class StatsActivity extends AppCompatActivity {
         gradeLabel.setText(scoreRounded + "%");
 
         if (scoreRounded >= 75) {
-            gradeLabel.setTextColor(getResources().getColor(R.color.darkGreen));
+            gradeLabel.setTextColor(ContextCompat.getColor(this, R.color.darkGreen));
         } else if (scoreRounded >= 50){
-            gradeLabel.setTextColor(getResources().getColor(R.color.darkYellow));
+            gradeLabel.setTextColor(ContextCompat.getColor(this, R.color.darkYellow));
         } else {
-            gradeLabel.setTextColor(getResources().getColor(R.color.darkRed));
+            gradeLabel.setTextColor(ContextCompat.getColor(this, R.color.darkRed));
         }
     }
 
