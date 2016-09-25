@@ -33,19 +33,21 @@ public class Async_Timer extends AsyncTask<Void, Integer, Void> {
         int initTime = (int) (new GregorianCalendar().getTimeInMillis() / 1000);
         Log.d("testTime","initTime: " + initTime);
 
+        int timeNow;
+        int timeElapsed;
 
         //while the timeLeft value is greater than 0 execute as long as not canceled
         while (timeLeft > 0 && !this.isCancelled()) {
 
             //get the currentTime in seconds at the top of the loop
-            int timeNow = (int) (new GregorianCalendar().getTimeInMillis() / 1000);
-            int timeElapsed = timeNow - initTime;
+            timeNow = (int) (new GregorianCalendar().getTimeInMillis() / 1000);
+            timeElapsed = timeNow - initTime;
 
             //compare the time elapsed to the counter value
             if (timeElapsed != counter) { //if they dont match we need to update the timeLeft and UI
                 Log.d("testTime", "timeElapsed: " + timeElapsed);
                 timeLeft--;
-                counter++; //the counter actually makes this impossible to cheat with calender change
+                counter++; //the counter actually makes this impossible to cheat with calender change - it causes the timer to just end
                 publishProgress(timeLeft);
             } else {
                 try {      //else wait 50ms and check again - this ensures 1/20th second accuracy
@@ -80,7 +82,7 @@ public class Async_Timer extends AsyncTask<Void, Integer, Void> {
     }
 
     interface TriviaTimer {
-        public void setTimer(int num);
-        public void finishTimer();
+        void setTimer(int num);
+        void finishTimer();
     }
 }
