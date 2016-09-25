@@ -1,5 +1,12 @@
 package edu.itcs4180.hw4_triviaapp;
 
+/**
+ * ITCS 4180 Homework4
+ * Group39_HW04.zip
+ * Dallas Sanchez
+ * Patrick King
+ */
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;

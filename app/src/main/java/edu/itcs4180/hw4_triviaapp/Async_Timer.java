@@ -1,11 +1,15 @@
 package edu.itcs4180.hw4_triviaapp;
 
+/**
+ * ITCS 4180 Homework4
+ * Group39_HW04.zip
+ * Dallas Sanchez
+ * Patrick King
+ */
+
 import android.os.AsyncTask;
 
 
-/**
- * Created by Dallas on 9/23/16.
- */
 public class Async_Timer extends AsyncTask<Void, Integer, Void> {
 
     int timeLeft;

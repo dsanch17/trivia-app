@@ -1,5 +1,12 @@
 package edu.itcs4180.hw4_triviaapp;
 
+/**
+ * ITCS 4180 Homework4
+ * Group39_HW04.zip
+ * Dallas Sanchez
+ * Patrick King
+ */
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,9 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Dallas on 9/22/16.
- */
+
 public class Async_FetchImage extends AsyncTask<String, Void, Bitmap> {
 
     ImageInterface imageInterface;

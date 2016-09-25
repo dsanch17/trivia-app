@@ -1,5 +1,12 @@
 package edu.itcs4180.hw4_triviaapp;
 
+/**
+ * ITCS 4180 Homework4
+ * Group39_HW04.zip
+ * Dallas Sanchez
+ * Patrick King
+ */
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,9 +14,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.Arrays;
 
-/**
- * Created by Dallas on 9/21/16.
- */
+
 public class Question implements Serializable{
 
     int id;

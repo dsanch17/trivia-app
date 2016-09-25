@@ -1,5 +1,11 @@
 package edu.itcs4180.hw4_triviaapp;
 
+/**
+ * ITCS 4180 Homework4
+ * Group39_HW04.zip
+ * Dallas Sanchez
+ * Patrick King
+ */
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -16,9 +22,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-/**
- * Created by Dallas on 9/21/16.
- */
 public class Async_FetchQuestions extends AsyncTask <String, Void, ArrayList<Question>>{
 
     urlDataReceiver dataReceiver;
